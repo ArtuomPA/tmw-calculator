@@ -30,3 +30,9 @@ Route::get('/faq', function () {
 Route::get('/my-builds', [BuildsListController::class,"viewBuildsList"]);
 
 Route::post('/ajax/calculate', [CalculatorController::class,"ajaxCalculate"]);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
