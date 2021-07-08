@@ -9,17 +9,29 @@
     <body>
         <div class="container py-3">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="/" class="nav-link px-2 link-secondary">Главная</a></li>
-                        <li><a href="/my-builds" class="nav-link px-2 link-dark">Мои билды</a></li>
-                        <li><a href="/faq" class="nav-link px-2 link-dark">Чаво</a></li>
-                        <li><a href="/about" class="nav-link px-2 link-dark">О нас</a></li>
-                  </ul>
-        
-                  <div class="col-md-3 text-end">
-                        <a href="/login" type="button" class="btn btn-outline-primary me-2">Вход</a>
-                        <a href="/register" type="button" class="btn btn-primary">Регистрация</a>
-                  </div>
+              	<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-2 link-secondary">Главная</a></li>
+                    <li><a href="/my-builds" class="nav-link px-2 link-dark">Мои билды</a></li>
+                    <li><a href="/faq" class="nav-link px-2 link-dark">Чаво</a></li>
+                    <li><a href="/about" class="nav-link px-2 link-dark">О нас</a></li>
+              	</ul>
+        		
+        		@auth
+                <div class="col-md-3 text-end">
+                	<form id="logout-form" action="{{ url('logout') }}" method="POST">
+                        {{ csrf_field() }}
+                        <ul class="nav flex-row-reverse">
+                            <li><button class="btn btn-primary" type="submit">Выйти</button></li>
+                            <li><p class="nav-link link-secondary">{{ Auth::user()->name }}</p></li>
+                        </ul>
+                    </form>
+                </div>
+                @else
+          		<div class="col-md-3 text-end">
+                    <a href="/login" type="button" class="btn btn-outline-primary me-2">Вход</a>
+                    <a href="/register" type="button" class="btn btn-primary">Регистрация</a>
+              	</div>
+              	@endauth
             </header>
 
         	@yield("main-content")
