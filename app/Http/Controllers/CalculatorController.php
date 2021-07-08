@@ -9,7 +9,23 @@ use Illuminate\Support\Facades\Auth;
 class CalculatorController extends Controller
 {
     public function viewBuild($id=-1) {
-        return view("calculator", ["buildId" => $id]);
+        $data = [];
+        
+        if ($id != -1) {
+            $build = Build::find($id);
+            
+            $data["buildId"] = $id;
+            $data["title"] = $build->title;
+            $data["description"] = $build->description;
+            $data["agility"] = $build->agility;
+            $data["dexterity"] = $build->dexterity;
+            $data["vitality"] = $build->vitality;
+            $data["luck"] = $build->luck;
+            $data["intelligence"] = $build->intelligence;
+            $data["strength"] = $build->strength;
+        }
+        
+        return view("calculator", $data);
     }
 
     public function ajaxCalculate(Request $request) {
@@ -44,7 +60,7 @@ class CalculatorController extends Controller
         return view("ajax-calculated", $data);
     }
     
-    public function save(Request $request, $id) {
+    public function save(Request $request, $id = -1) {
         if ($id == -1){
             if (Auth::check()) {
                 $build = new Build();

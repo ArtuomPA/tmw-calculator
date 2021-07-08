@@ -16,27 +16,27 @@
                     	<table>
                           	<tr>
                             	<td>Выносливость</td>
-                            	<td><input autofocus required class="form-control" name="agility" id="agility-ajax" placeholder="Введите значение выносливости" type="number"/></td>
+                            	<td><input autofocus required class="form-control" name="agility" id="agility-ajax" placeholder="Введите значение выносливости" type="number" value="{{$agility ?? ''}}"/></td>
                           	</tr>
                           	<tr>
                             	<td>Ловкость</td>
-                            	<td><input required class="form-control" name="dexterity" id="dexterity-ajax" placeholder="Введите значение ловкости" type="number"/></td>
+                            	<td><input required class="form-control" name="dexterity" id="dexterity-ajax" placeholder="Введите значение ловкости" type="number" value="{{$dexterity ?? ''}}"/></td>
                           	</tr>
                           	<tr>
                             	<td>Живучесть</td>
-                            	<td><input required class="form-control" name="vitality" id="vitality-ajax" placeholder="Введите значение живучести" type="number"/></td>
+                            	<td><input required class="form-control" name="vitality" id="vitality-ajax" placeholder="Введите значение живучести" type="number" value="{{$vitality ?? ''}}"/></td>
                           	</tr>
                           	<tr>
                             	<td>Удача</td>
-                            	<td><input required class="form-control" name="luck" id="luck-ajax" placeholder="Введите значение удачи" type="number"/></td>
+                            	<td><input required class="form-control" name="luck" id="luck-ajax" placeholder="Введите значение удачи" type="number" value="{{$luck ?? ''}}"/></td>
                           	</tr>
                           	<tr>
                             	<td>Интеллект</td>
-                            	<td><input required class="form-control" name="intelligence" id="intelligence-ajax" placeholder="Введите значение интеллекта" type="number"/></td>
+                            	<td><input required class="form-control" name="intelligence" id="intelligence-ajax" placeholder="Введите значение интеллекта" type="number" value="{{$intelligence ?? ''}}"/></td>
                           	</tr>
                           	<tr>
                             	<td>Сила</td>
-                            	<td><input required class="form-control" name="strength" id="strength-ajax" placeholder="Введите значение силы" type="number"/></td>
+                            	<td><input required class="form-control" name="strength" id="strength-ajax" placeholder="Введите значение силы" type="number" value="{{$strength ?? ''}}"/></td>
                           	</tr>
                         </table>
                         
@@ -46,17 +46,17 @@
                 </div>
                 
                 <div class="col-sm-8">
-                    <form method="post" id="calculator" action="/save/{{ $buildId }}">
-                    	<input hidden="true" required class="form-control" name="agility" id="agility" placeholder="Введите значение выносливости" type="number"/>
-                        <input hidden="true" required class="form-control" name="dexterity" id="dexterity" placeholder="Введите значение ловкости" type="number"/>
-                        <input hidden="true" required class="form-control" name="vitality" id="vitality" placeholder="Введите значение живучести" type="number"/>
-                        <input hidden="true" required class="form-control" name="luck" id="luck" placeholder="Введите значение удачи" type="number"/>
-                        <input hidden="true" required class="form-control" name="intelligence" id="intelligence" placeholder="Введите значение интеллекта" type="number"/>
-                        <input hidden="true" required class="form-control" name="strength" id="strength" placeholder="Введите значение силы" type="number"/>
+                    <form method="post" id="calculator" action="/save/{{ $buildId ?? '' }}">
+                    	<input hidden="true" required class="form-control" name="agility" id="agility" placeholder="Введите значение выносливости" type="number" value="{{$agility ?? ''}}"/>
+                        <input hidden="true" required class="form-control" name="dexterity" id="dexterity" placeholder="Введите значение ловкости" type="number" value="{{$dexterity ?? ''}}"/>
+                        <input hidden="true" required class="form-control" name="vitality" id="vitality" placeholder="Введите значение живучести" type="number" value="{{$vitality ?? ''}}"/>
+                        <input hidden="true" required class="form-control" name="luck" id="luck" placeholder="Введите значение удачи" type="number" value="{{$luck ?? ''}}"/>
+                        <input hidden="true" required class="form-control" name="intelligence" id="intelligence" placeholder="Введите значение интеллекта" type="number" value="{{$intelligence ?? ''}}"/>
+                        <input hidden="true" required class="form-control" name="strength" id="strength" placeholder="Введите значение силы" type="number" value="{{$strength ?? ''}}"/>
                         <p>Заголовок</p>
-                        <input required class="form-control" name="title" id="title" placeholder="Введите заголовок" type="text"/>
+                        <input required class="form-control" name="title" id="title" placeholder="Введите заголовок" type="text" value="{{$title ?? ''}}"/>
                         <p>Описание</p>
-                        <textarea class="form-control" name="description" id="description" placeholder="Введите текст описания (не обязательно)" rows="4"></textarea> 
+                        <textarea class="form-control" name="description" id="description" placeholder="Введите текст описания (не обязательно)" rows="4">{{$description ?? ''}}</textarea> 
                         
                         @csrf
                         
