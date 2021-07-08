@@ -17,7 +17,7 @@ use App\Http\Controllers\BuildsListController;
 
 Route::get('/', [CalculatorController::class,"viewBuild"]);
 
-Route::get('/build/{id}', [CalculatorController::class,"viewBuild"]);
+Route::get('/build/{id}', [CalculatorController::class,"viewBuild"])->name('build');;
 
 Route::get('/about', function () {
     return view('about');
@@ -31,8 +31,8 @@ Route::get('/my-builds', [BuildsListController::class,"viewBuildsList"]);
 
 Route::post('/ajax/calculate', [CalculatorController::class,"ajaxCalculate"]);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::post('/save', [CalculatorController::class,"save"]);
+
+Route::post('/save/{id}', [CalculatorController::class,"save"])->middleware('auth');
 
 require __DIR__.'/auth.php';
