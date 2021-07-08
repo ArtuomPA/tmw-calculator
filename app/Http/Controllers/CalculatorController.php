@@ -98,4 +98,16 @@ class CalculatorController extends Controller
         }
         return redirect()->route('build', ['id' => $id]);
     }
+    
+    public function delete($id){
+        $build = Build::find($id);
+        $buildUserId = $build->user_id;
+        $curUserId = Auth::id();
+        
+        if ($buildUserId == $curUserId){
+            Build::find($id)->delete();
+        }
+        
+        return redirect()->route('my-builds');
+    }
 }
